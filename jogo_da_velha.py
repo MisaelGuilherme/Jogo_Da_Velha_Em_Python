@@ -1,3 +1,8 @@
+'''
+Programador: Misael Jesus
+Data: 10/02/2002
+email: misaelleite2002@gmail.com
+'''
 import os
 jogador1 = 0
 jogador2 = 0
@@ -8,60 +13,75 @@ ganhaX = ['x','x','x']
 ganhaO = ['O','O','O']                
 m = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
 
-#CONFIGURAÇÕES DO CONTROLE DO 1º JOGADOR
+#========================= CONFIGURAÇÕES DO CONTROLE DO 1º JOGADOR ==========================
 
 def comandoJogador1():
     global vezesJogar
     global quemJoga
     if quemJoga == 1 and vezesJogar < maxTent:
-        jogador1 = int(input('VEZ DE ( X ): '))
-        if m[0][0] == ' ' and jogador1 == 1:
-            m[0][0] = 'x'
-        if m[0][1] == ' ' and jogador1 == 2:
-            m[0][1] = 'x'
-        if m[0][2] == ' ' and jogador1 == 3:
-            m[0][2] = 'x'
-        if m[1][0] == ' ' and jogador1 == 4:
-            m[1][0] = 'x'
-        if m[1][1] == ' ' and jogador1 == 5:
-            m[1][1] = 'x'
-        if m[1][2] == ' ' and jogador1 == 6:
-            m[1][2] = 'x'
-        if m[2][0] == ' ' and jogador1 == 7:
-            m[2][0] = 'x'
-        if m[2][1] == ' ' and jogador1 == 8:
-            m[2][1] = 'x'
-        if m[2][2] == ' ' and jogador1 == 9:
-            m[2][2] = 'x'
+        try:
+            jogador1 = int(input('VEZ DE ( X ): '))
+        except:
+            print('ERROR: VALOR DIGITADO NÃO RECONHECIDO!')
+        else:
+            while jogador1 < 1 or jogador1 > 9:
+                print('ERROR: DIGITE UM NÚMERO VÁLIDO PARA O TABULEIRO!')
+                jogador1 = int(input('VEZ DE ( X ): '))
+            if m[0][0] == ' ' and jogador1 == 1:
+                m[0][0] = 'x'
+            if m[0][1] == ' ' and jogador1 == 2:
+                m[0][1] = 'x'
+            if m[0][2] == ' ' and jogador1 == 3:
+                m[0][2] = 'x'
+            if m[1][0] == ' ' and jogador1 == 4:
+                m[1][0] = 'x'
+            if m[1][1] == ' ' and jogador1 == 5:
+                m[1][1] = 'x'
+            if m[1][2] == ' ' and jogador1 == 6:
+                m[1][2] = 'x'
+            if m[2][0] == ' ' and jogador1 == 7:
+                m[2][0] = 'x'
+            if m[2][1] == ' ' and jogador1 == 8:
+                m[2][1] = 'x'
+            if m[2][2] == ' ' and jogador1 == 9:
+                m[2][2] = 'x'
         quemJoga = 2
         vezesJogar += 1
+        
+#========================= CONFIGURAÇÕES DO CONTROLE DO 2º JOGADOR ==========================
 
-#CONFIGURAÇÕES DO CONTROLE DO 2º JOGADOR
 def comandoJogador2():
     global vezesJogar
     global quemJoga
     if quemJoga == 2 and vezesJogar < maxTent:
-        jogador2 = int(input('VEZ DE ( O ): '))
-        if m[0][0] == ' ' and jogador2 == 1:
-            m[0][0] = 'O'
-        if m[0][1] == ' ' and jogador2 == 2:
-            m[0][1] = 'O'
-        if m[0][2] == ' ' and jogador2 == 3:
-            m[0][2] = 'O'
-        if m[1][0] == ' ' and jogador2 == 4:
-            m[1][0] = 'O'
-        if m[1][1] == ' ' and jogador2 == 5:
-            m[1][1] = 'O'
-        if m[1][2] == ' ' and jogador2 == 6:
-            m[1][2] = 'O'
-        if m[2][0] == ' ' and jogador2 == 7:
-            m[2][0] = 'O'
-        if m[2][1] == ' ' and jogador2 == 8:
-            m[2][1] = 'O'
-        if m[2][2] == ' ' and jogador2 == 9:
-            m[2][2] = 'O'
-        quemJoga = 1
-        vezesJogar += 1
+        try:
+            jogador2 = int(input('VEZ DE ( O ): '))
+        except:
+            print('ERROR: VALOR DIGITADO NÃO RECONHECIDO!')
+        else:
+            while jogador2 < 1 or jogador2 > 9:
+                print('ERROR: DIGITE UM NÚMERO VÁLIDO PARA O TABULEIRO!')
+                jogador2 = int(input('VEZ DE ( X ): '))
+            if m[0][0] == ' ' and jogador2 == 1:
+                m[0][0] = 'O'
+            if m[0][1] == ' ' and jogador2 == 2:
+                m[0][1] = 'O'
+            if m[0][2] == ' ' and jogador2 == 3:
+                m[0][2] = 'O'
+            if m[1][0] == ' ' and jogador2 == 4:
+                m[1][0] = 'O'
+            if m[1][1] == ' ' and jogador2 == 5:
+                m[1][1] = 'O'
+            if m[1][2] == ' ' and jogador2 == 6:
+                m[1][2] = 'O'
+            if m[2][0] == ' ' and jogador2 == 7:
+                m[2][0] = 'O'
+            if m[2][1] == ' ' and jogador2 == 8:
+                m[2][1] = 'O'
+            if m[2][2] == ' ' and jogador2 == 9:
+                m[2][2] = 'O'
+            quemJoga = 1
+            vezesJogar += 1
 
 def tabuleiroVelha():
     print('')
@@ -76,32 +96,73 @@ def verificaGanhador():
     somaX = 0
     somaO = 0
     vitoria = 0
-    #--------NÃO MEXER
+    
+    #========================= VITÓRIA NA HORIZONTAL ==========================
+    
     for c in range(0,3):
         if m[c] == ganhaX:
-            print('VENCEU X')
+            print(10*'=',  ' VENCEU! | X |',  10*'=')
             vitoria = 1    
+            break
         if m[c] == ganhaO:
-            print('VENCEU O')
+            print(10*'=',  ' VENCEU! | O |',  10*'=')
             vitoria = 1
+            break
+    
+    #========================= VITÓRIA NA VERTICAL ==========================
+    
     for d in m:
-        if d[jogador1] == 'x':
-            somaX += 1
-            if somaX == 3:
-                print('ok X')
-                vitoria = 1
-                break
+        if m[0][0] == 'x' and m[1][0] == 'x' and m[2][0] == 'x':
+            print(10*'=',  ' VENCEU! | X |',  10*'=')
+            vitoria = 1
+            break
+        if m[0][1] == 'x' and m[1][1] == 'x' and m[2][1] == 'x':
+            print(10*'=',  ' VENCEU! | X |',  10*'=')
+            vitoria = 1
+            break
+        if m[0][2] == 'x' and m[1][2] == 'x' and m[2][2] == 'x':
+            print(10*'=',  ' VENCEU! | X |',  10*'=')
+            vitoria = 1
+            break
     for e in m:
-        if e[jogador2] == 'O':
-            somaO += 1
-            if somaO == 3:
-                print('ok O')
-                vitoria = 1
-                break
+        if m[0][0] == 'O' and m[1][0] == 'O' and m[2][0] == 'O':
+            print(10*'=',  ' VENCEU! | O |',  10*'=')
+            vitoria = 1
+            break
+        if m[0][1] == 'O' and m[1][1] == 'O' and m[2][1] == 'O':
+            print(10*'=',  ' VENCEU! | O |',  10*'=')
+            vitoria = 1
+            break
+        if m[0][2] == 'O' and m[1][2] == 'O' and m[2][2] == 'O':
+            print(10*'=',  ' VENCEU! | O |',  10*'=')
+            vitoria = 1
+            break
+    
+    #========================= VITÓRIA NA DIAGONAL ==========================
+    
+    for i in m:
+        if m[0][0] == 'x' and m[1][1] == 'x' and m[2][2] == 'x':
+            print(10*'=',  ' VENCEU! | X |',  10*'=')
+            vitoria = 1
+            break
+    for i in m:
+        if m[0][2] == 'x' and m[1][1] == 'x' and m[2][0] == 'x':
+            print(10*'=',  ' VENCEU! | X |',  10*'=')
+            vitoria = 1
+            break
+    for l in m:
+        if m[0][0] == 'O' and m[1][1] == 'O' and m[2][1] == 'O':
+            print(10*'=',  ' VENCEU! | O |',  10*'=')
+            vitoria = 1
+            break
+    for i in m:
+        if m[0][2] == 'O' and m[1][1] == 'O' and m[2][0] == 'O':
+            print(10*'=',  ' VENCEU! | O |',  10*'=')
+            vitoria = 1
+            break
     return vitoria
-#---------------------
 
-#=====================================================================================    
+#========================= MENU DO JOGO ==========================   
             
 print(50*'=')
 print('')
@@ -113,13 +174,15 @@ print('           [2]  COMO JOGAR')
 print('           [3]  CRÉDITOS')
 print('           [4]  SAIR')
 print('')
-aperte = int(input('   DIGITE: '))
 
+aperte = int(input('   DIGITE: '))
 while aperte < 1 or aperte > 4:
     print('ERROR, VALOR NÃO ACEITO TENTE DE NOVO!')
     print('')
     aperte = int(input('DIGITE: '))
-    
+
+#========================= ESCOLHA 1 DO JOGO - INICIAR PARTIDA ==========================
+
 if aperte == 1:
     os.system('cls')
     cruz = 0
@@ -148,20 +211,7 @@ if aperte == 1:
         if vit == 1:
             break
     
-    ''' 
-        if matriz[0][0] and matriz[1][0] and matriz[2][0] == 'x':
-            print(10*'=',  ' ( X ) VENCEU! ',  10*'=')
-        if matriz[0][1] and matriz[1][1] and matriz[2][1] == 'x':
-            print(10*'=',  ' ( X ) VENCEU! ',  10*'=')
-        if matriz[0][2] and matriz[1][2] and matriz[2][2] == 'x':
-            print(10*'=',  ' ( X ) VENCEU! ',  10*'=')'''
-    '''
-    #=====================================================================================        
-        
-            jogador2 = int(input('2º JOGADOR: '))
-            comandoJogador2()
-            tabuleiroVelha()'''
-        
+#========================= ESCOLHA 2 DO JOGO - COMO JOGAR ==========================
 
 if aperte == 2:
     print('')
@@ -174,6 +224,8 @@ if aperte == 2:
                                     _4_|_5_|_6_                 
                                      7 | 8 | 9                      ''')
     
+#========================= ESCOLHA 3 DO JOGO - CRÉDITOS ==========================
+
 if aperte == 3:
     print('')
     print('CRÉDITOS:')
@@ -186,8 +238,3 @@ if aperte == 3:
 if aperte == 4:
     os.system('cls')
     os.system('exit')
-
-    '''for i in range(0,3):
-        print(i)
-    if matriz[0][0] and matriz[1][1] and matriz[2][2]:
-        print('VENCEDOR')'''
