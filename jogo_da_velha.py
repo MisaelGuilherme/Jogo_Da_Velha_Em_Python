@@ -237,6 +237,9 @@ def menu_jogo():
         voltar = int(input('Voltar ao Menu? Sim[1] Não[0] : '))
         if voltar == 1:
             menu_jogo()
+        else:
+            print('=========== Saindo..... ==========')
+            sleep(1.5)
         
     #========================= ESCOLHA 3 DO JOGO - CRÉDITOS ==========================
 
