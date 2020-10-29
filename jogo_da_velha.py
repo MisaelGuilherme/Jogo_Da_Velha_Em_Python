@@ -246,6 +246,10 @@ def menu_jogo():
         print('UNIFBV WYDEN')
         print('EMAIL: misaellleite2002@gmai.com')
 
+        voltar = int(input('Voltar ao Menu? Sim[1] Não[0] : '))
+        if voltar == 1:
+            menu_jogo()
+
     if aperte == 4:
         os.system('cls')
         os.system('exit')
