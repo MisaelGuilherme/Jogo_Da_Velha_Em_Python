@@ -231,8 +231,9 @@ def menu_jogo():
                                                                     
                                         _1_|_2_|_3_                 
                                         _4_|_5_|_6_                 
-                                        7 | 8 | 9                      ''')
+                                         7 | 8 | 9                      ''')
         
+        print('')
         voltar = int(input('Voltar ao Menu? Sim[1] Não[0] : '))
         if voltar == 1:
             menu_jogo()
@@ -246,8 +247,9 @@ def menu_jogo():
         print('PROGRAMADOR: MISAEL JESUS')
         print('RA: 2010816155')
         print('UNIFBV WYDEN')
-        print('EMAIL: misaellleite2002@gmai.com')
-
+        print('EMAIL: misaelleite2002@gmail.com')
+        
+        print('')
         voltar = int(input('Voltar ao Menu? Sim[1] Não[0] : '))
         if voltar == 1:
             menu_jogo()
