@@ -3,6 +3,8 @@ Programador: Misael Jesus
 Data: 10/02/2002
 email: misaelleite2002@gmail.com
 '''
+
+from time import sleep
 import os
 jogador1 = 0
 jogador2 = 0
@@ -251,6 +253,8 @@ def menu_jogo():
             menu_jogo()
 
     if aperte == 4:
+        print('=========== Saindo..... ==========')
+        sleep(1.5)
         os.system('cls')
         os.system('exit')
 
