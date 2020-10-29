@@ -8,7 +8,7 @@ jogador1 = 0
 jogador2 = 0
 quemJoga = 1
 vezesJogar = 0
-maxTent = 9
+maxTent = 10
 ganhaX = ['x','x','x']
 ganhaO = ['O','O','O']                
 m = [[' ',' ',' '],[' ',' ',' '],[' ',' ',' ']]
@@ -53,7 +53,7 @@ def comandoJogador1():
 def comandoJogador2():
     global vezesJogar
     global quemJoga
-    if quemJoga == 2 and vezesJogar < maxTent:
+    if quemJoga == 2 and vezesJogar <= maxTent:
         try:
             jogador2 = int(input('VEZ DE ( O ): '))
         except:
@@ -163,78 +163,91 @@ def verificaGanhador():
     return vitoria
 
 #========================= MENU DO JOGO ==========================   
-            
-print(50*'=')
-print('')
-print('===============   JOGO DA VELHA   ================')
-print('')
-print('   APERTE: ')
-print('           [1]  INICIAR PARTIDA')
-print('           [2]  COMO JOGAR')
-print('           [3]  CRÉDITOS')
-print('           [4]  SAIR')
-print('')
 
-aperte = int(input('   DIGITE: '))
-while aperte < 1 or aperte > 4:
-    print('ERROR, VALOR NÃO ACEITO TENTE DE NOVO!')
+def menu_jogo():
+    print(50*'=')
     print('')
-    aperte = int(input('DIGITE: '))
+    print('===============   JOGO DA VELHA   ================')
+    print('')
+    print('   APERTE: ')
+    print('           [1]  INICIAR PARTIDA')
+    print('           [2]  COMO JOGAR')
+    print('           [3]  CRÉDITOS')
+    print('           [4]  SAIR')
+    print('')
 
-#========================= ESCOLHA 1 DO JOGO - INICIAR PARTIDA ==========================
+    aperte = int(input('   DIGITE: '))
+    while aperte < 1 or aperte > 4:
+        print('ERROR, VALOR NÃO ACEITO TENTE DE NOVO!')
+        print('')
+        aperte = int(input('DIGITE: '))
 
-if aperte == 1:
-    os.system('cls')
-    cruz = 0
-    bola = 0
-    empate = 0
-    
-    print('===============   PLACAR DO JOGO   ===============')
-    print('')
-    print(f'       O => {bola}          X         x => {cruz}')
-    print('                                              ')
-    print(f'      EMPATE: {empate}                       ')
-    print('==============================================')
-    print('')
-    cont = 0
-    tabuleiroVelha()
-    print('')
-    while True:
-        comandoJogador1()
+    #========================= ESCOLHA 1 DO JOGO - INICIAR PARTIDA ==========================
+
+    if aperte == 1:
+        os.system('cls')
+        cruz = 0
+        bola = 0
+        empate = 0
+        
+        print('===============   PLACAR DO JOGO   ===============')
+        print('')
+        print(f'       O => {bola}          X         x => {cruz}')
+        print('                                              ')
+        print(f'      EMPATE: {empate}                       ')
+        print('==============================================')
+        print('')
+        cont = 0
         tabuleiroVelha()
-        vit = verificaGanhador()
-        if vit == 1:
-            break
-        comandoJogador2()
-        tabuleiroVelha()
-        vit = verificaGanhador()
-        if vit == 1:
-            break
-    
-#========================= ESCOLHA 2 DO JOGO - COMO JOGAR ==========================
+        print('')
+        while True:
+            comandoJogador1()
+            tabuleiroVelha()
+            vit = verificaGanhador()
+            if vit == 1:
+                break
+            if vezesJogar == 9:
+                print('EMPATE X . O')
+                break
+            comandoJogador2()
+            tabuleiroVelha()
+            vit = verificaGanhador()
+            if vit == 1:
+                break
+            if vezesJogar == 9:
+                print('EMPATE X . O')
+                break
+        
+    #========================= ESCOLHA 2 DO JOGO - COMO JOGAR ==========================
 
-if aperte == 2:
-    print('')
-    print('COMO JOGAR: ')
-    print('''
-    O 1º JOGADOR INICIARÁ COM X, PARA ESCOLHER O CAMPO EM QUE DESEJA JOGAR
-    DIGITE O NÚMERO REFERENCIADO AO MESMO. O TEBULEIRO POSSUI 9 CAMPOS.
-                                                                
-                                    _1_|_2_|_3_                 
-                                    _4_|_5_|_6_                 
-                                     7 | 8 | 9                      ''')
-    
-#========================= ESCOLHA 3 DO JOGO - CRÉDITOS ==========================
+    if aperte == 2:
+        print('')
+        print('COMO JOGAR: ')
+        print('''
+        O 1º JOGADOR INICIARÁ COM X, PARA ESCOLHER O CAMPO EM QUE DESEJA JOGAR
+        DIGITE O NÚMERO REFERENCIADO AO MESMO. O TEBULEIRO POSSUI 9 CAMPOS.
+                                                                    
+                                        _1_|_2_|_3_                 
+                                        _4_|_5_|_6_                 
+                                        7 | 8 | 9                      ''')
+        
+        voltar = int(input('Voltar ao Menu? Sim[1] Não[0] : '))
+        if voltar == 1:
+            menu_jogo()
+        
+    #========================= ESCOLHA 3 DO JOGO - CRÉDITOS ==========================
 
-if aperte == 3:
-    print('')
-    print('CRÉDITOS:')
-    print('')
-    print('PROGRAMADOR: MISAEL JESUS')
-    print('RA: 2010816155')
-    print('UNIFBV WYDEN')
-    print('EMAIL: misaellleite2002@gmai.com')
+    if aperte == 3:
+        print('')
+        print('CRÉDITOS:')
+        print('')
+        print('PROGRAMADOR: MISAEL JESUS')
+        print('RA: 2010816155')
+        print('UNIFBV WYDEN')
+        print('EMAIL: misaellleite2002@gmai.com')
 
-if aperte == 4:
-    os.system('cls')
-    os.system('exit')
+    if aperte == 4:
+        os.system('cls')
+        os.system('exit')
+
+menu_jogo()
